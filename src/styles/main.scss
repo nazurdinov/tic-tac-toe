@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #ffffff;
+	font-size: 16px;
+	background: url(./images/bg.jpg) 50% 50% no-repeat;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans Condensed', sans-serif;
+	h1 {
+		text-align: center;
+		color: #f1f1f1;
+		font-size: 4em;
+		margin: 0;
+		line-height: 1.5em;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #fff;
+	}
+	.game {
+		display: flex;
+		justify-content: space-between;
+		height: 100vh;
+		flex-direction: column;
+		align-items: center;
+		.x {
+			color: #03a9f4;
+		}
+		.o {
+			color: #f1f1f1;
+		}
+
+		.nav {
+			display: inline-flex;
+			justify-content: space-around;
+			width: 100%;
+			padding: 10px;
+			background: #222223;
+			align-items: center;
+			.MuiFormControlLabel-root {
+				.MuiTypography-body1 {
+					font-family: 'Open Sans Condensed', sans-serif;
+				}
+				flex-direction: column;
+				color: #ffffff;
+				&:hover {
+					color: #03a9f4;
+					svg {
+						fill: #03a9f4;
+					}
+				}
+			}
+			.MuiCheckbox-root {
+				padding-bottom: 0;
+			}
+			.restart-btn {
+				cursor: pointer;
+				&:hover {
+					svg {
+						fill: #03a9f4;
+					}
+				}
+			}
+			.undo-btn {
+				cursor: pointer;
+				&:hover {
+					svg {
+						fill: #03a9f4;
+					}
+				}
+			}
+			svg {
+				fill: #ffffff;
+				width: 2em;
+				height: 2em;
+			}
+		}
+		.board {
+			width: 80vw;
+			height: 80vw;
+			max-width: 600px;
+			max-height: 600px;
+			position: relative;
+			.square {
+				width: 32%;
+				height: 32%;
+				background-color: transparent;
+				cursor: pointer;
+				-moz-transition: all 0.3s cubic-bezier(0.05, 0.76, 0.29, 1.32);
+				-webkit-transition: all 0.3s cubic-bezier(0.05, 0.76, 0.29, 1.32);
+				transition: all 0.3s cubic-bezier(0.05, 0.76, 0.29, 1.32);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 0;
+				float: left;
+				text-transform: uppercase;
+				border: 1px dotted #9e9999;
+				color: #545252;
+				font-family: 'Itim', cursive;
+				&:hover {
+					background: rgba(255, 255, 255, 0.1);
+				}
+				&.x {
+					color: #03a9f4;
+					font-size: 11em;
+					&:hover {
+						background: transparent;
+					}
+				}
+				&.o {
+					color: #f1f1f1;
+					font-size: 11em;
+					&:hover {
+						background: transparent;
+					}
+				}
+				&.s1 {
+					border-left: 0;
+					border-top: 0;
+				}
+				&.s2 {
+					border-top: 0;
+				}
+				&.s3 {
+					border-right: 0;
+					border-top: 0;
+				}
+				&.s4 {
+					border-left: 0;
+				}
+				&.s6 {
+					border-right: 0;
+				}
+				&.s7 {
+					border-left: 0;
+					border-bottom: 0;
+				}
+				&.s8 {
+					border-bottom: 0;
+				}
+				&.s9 {
+					border-right: 0;
+					border-bottom: 0;
+				}
+			}
+		}
+		.players_names_block {
+			color: #fff;
+			display: flex;
+			justify-content: space-around;
+			width: 100%;
+			font-size: 1.6em;
+			align-items: center;
+			background: #222324;
+			overflow: hidden;
+			padding: 10px;
+			.player {
+				padding: 10px 10px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				opacity: 0.3;
+				font-family: 'Open Sans Condensed', sans-serif;
+				-moz-transition: transform 1s;
+				-webkit-transition: transform 1s;
+				transition: transform 1s;
+				&.active {
+					opacity: 1;
+				}
+			}
+			.o {
+				color: #f1f1f1;
+				font-size: 1.5em;
+				font-family: 'Itim', cursive;
+			}
+			.x {
+				color: #03a9f4;
+				font-size: 1.5em;
+				font-family: 'Itim', cursive;
+			}
+			.vs {
+				-moz-transition: transform 1s;
+				-webkit-transition: transform 1s;
+				transition: transform 1s;
+			}
+			.winner-alert {
+				font-family: 'Open Sans Condensed', sans-serif;
+				color: #f5f5f5;
+				font-size: 1.8em;
+				position: absolute;
+				-moz-transform: scale(0);
+				-webkit-transform: scale(0);
+				transform: scale(0);
+
+				-moz-transition: transform 0.5s;
+				-webkit-transition: transform 0.5s;
+				transition: transform 0.5s;
+				.x {
+					font-family: 'Itim', cursive;
+					font-size: 1.9em;
+					color: #f5f5f5;
+				}
+				.o {
+					font-family: 'Itim', cursive;
+					font-size: 1.9em;
+				}
+			}
+			&.show_winner {
+				background: #009688;
+				.player-o {
+					-moz-transform: translateX(-100vw);
+					-webkit-transform: translateX(-100vw);
+					transform: translateX(-100vw);
+				}
+				.player-x {
+					-moz-transform: translateX(100vw);
+					-webkit-transform: translateX(100vw);
+					transform: translateX(100vw);
+				}
+				.vs {
+					-moz-transform: translateY(-200px);
+					-webkit-transform: translateY(-200px);
+					transform: translateY(-200px);
+				}
+				.winner-alert {
+					-moz-transform: scale(1);
+					-webkit-transform: scale(1);
+					transform: scale(1);
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 580px) {
+	body {
+		.game {
+			.board {
+				.square {
+					font-size: 0;
+					&.x {
+						color: #03a9f4;
+						font-size: 6em;
+					}
+					&.o {
+						color: #f1f1f1;
+						font-size: 6em;
+					}
+				}
+			}
+		}
+	}
+}
